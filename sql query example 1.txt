@@ -1,0 +1,18 @@
+with tb1 as (
+select json_extract(data, '$.email') AS emailz, * from query_api_prod.epostal_inbound_good 
+where inbound_list_id = 117 -- Decision Links    ## change id to match the partner (based on google sheet)
+and qapi_date >= '2022-10-01') 
+select emailz from tb1 
+where emailz is not null;
+
+with tb1 as (
+select json_extract(data, '$.email') AS emailz from query_api_prod.epostal_inbound_good 
+where inbound_list_id = 117 -- AA    ## change id to match the partner
+and qapi_date >= '2022-09-01'),
+tb2 as (
+select json_extract(lower(data), '$.email') AS emailz2 from query_api_prod.epostal_inbound_good 
+where inbound_list_id = 107 -- ALESCO    ## change id to match the partner
+and qapi_date >= '2022-09-01')
+select count(emailz)
+from tb1
+where emailz in (select emailz2 from tb2);

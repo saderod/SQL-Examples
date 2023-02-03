@@ -1,0 +1,27 @@
+select "person_uid", "political_party_input_individual_cd", "vehicle_type_1_no", "collectible_coins", 
+"value_priced_general_merch", "jewelry", "age_in_two_year_increments", "min_income", "max_income", 
+"gender_cd", "presence_of_children_new_ind", "vehicle_intend_to_purchase", "race_cd", 
+"marital_status_in_the_household_cd"  from data_ops.b2c_cs_master 
+where ("political_party_input_individual_cd" != 'D' and "senior_adult_in_household" = 'Y' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') and "working_woman_ind" = 'Y' 
+and "young_adult_in_household"='Y' and "antique_arts" = 0 and "boat_owner" = 0 and "books_music_audio" = 0 and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53) 
+or ("political_party_input_individual_cd" != 'D' and "senior_adult_in_household" = 'Y' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') and "working_woman_ind" = 'Y' 
+and "young_adult_in_household"='Y' and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53) 
+or ("political_party_input_individual_cd" != 'D' and "senior_adult_in_household" = 'Y' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53)
+or ("political_party_input_individual_cd" != 'D' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') 
+and "young_adult_in_household"='Y' and "antique_arts" = 0 and "boat_owner" = 0 and "books_music_audio" = 0 and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53) 
+or ("political_party_input_individual_cd" != 'D' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') 
+and "young_adult_in_household"='Y' and "antique_arts" = 0 and "books_music_audio" = 0 and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53) 
+or ("political_party_input_individual_cd" != 'D' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') 
+and "young_adult_in_household"='Y' and "boat_owner" = 0 and "books_music_audio" = 0 and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53) 
+or ("political_party_input_individual_cd" != 'D' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') 
+and "young_adult_in_household"='Y' and "antique_arts" = 0 and "boat_owner" = 0 and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53)
+or ("political_party_input_individual_cd" != 'D' and 
+"vehicle_type_1_no" in ('U1', 'M4', 'P1', 'P2', 'P3', 'P4', 'V1', 'V3') and "antique_arts" = 0 and "boat_owner" = 0 and "books_music_audio" = 0 and "age_in_two_year_increments" < 89 and "age_in_two_year_increments" > 53) 
+limit 10000000;
